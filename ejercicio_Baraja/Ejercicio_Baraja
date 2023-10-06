@@ -1,1 +1,68 @@
+import java.util.List;
+import java.util.Scanner;
 
+public class Ejercicio_Baraja {
+    public static void main(String[] args) {
+        Baraja baraja = new Baraja();
+        Scanner scanner = new Scanner(System.in);
+
+        int opcion;
+        do {
+            System.out.println("\n--- Menú ---");
+            System.out.println("1. Barajar");
+            System.out.println("2. Siguiente Carta");
+            System.out.println("3. Cartas Disponibles");
+            System.out.println("4. Dar Cartas");
+            System.out.println("5. Cartas Montón");
+            System.out.println("6. Mostrar Baraja");
+            System.out.println("7. Salir");
+            System.out.print("Ingrese su opción: ");
+            opcion = scanner.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    baraja.barajar();
+                    break;
+                case 2:
+    Carta siguiente = baraja.siguienteCarta();
+    if (siguiente != null) {
+        System.out.println("Siguiente carta: " + siguiente);
+    }
+    break;
+
+                case 3:
+                    System.out.println("Cartas disponibles: " + baraja.cartasDisponibles());
+                    break;
+                case 4:
+    System.out.print("Ingrese el número de cartas a dar: ");
+    int numCartas = scanner.nextInt();
+    List<Carta> cartasDadas = baraja.darCartas(numCartas);
+    System.out.println("Cartas dadas:");
+    for (Carta carta : cartasDadas) {
+        System.out.println(carta);
+    }
+    break;
+                case 5:
+    List<Carta> cartasEnMonton = baraja.cartasMonton();
+    if (!cartasEnMonton.isEmpty()) {
+        System.out.println("Cartas en el montón:");
+        for (Carta carta : cartasEnMonton) {
+            System.out.println(carta);
+        }
+    }
+    break;
+
+                case 6:
+    baraja.mostrarBaraja();
+    break;
+
+                case 7:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Inténtelo de nuevo.");
+                    break;
+            }
+        } while (opcion != 7);
+    }
+}
