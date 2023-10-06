@@ -1,0 +1,31 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ejforfahrenheit;
+
+/**
+ *
+ * @author Matteo
+ */
+public class EjForFahrenheit {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        System.out.println("ºF   ºC");
+        System.out.println("---------------");
+
+        for (int fahrenheit = 10; fahrenheit <= 100; fahrenheit += 10) {
+            double celsius = convertirFahrenheitACelsius(fahrenheit);
+            System.out.printf("%3d   %6.2f\n", fahrenheit, celsius);
+        }
+    }
+
+    public static double convertirFahrenheitACelsius(int fahrenheit) {
+        return (fahrenheit - 32) * 5.0 / 9.0;
+    }
+
+}
