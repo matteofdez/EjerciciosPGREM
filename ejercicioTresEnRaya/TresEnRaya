@@ -1,0 +1,115 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package tresenraya;
+
+/**
+ *
+ * @author NitroPC
+ */
+public class TresEnRaya {
+    private static int[][] tablero = new int[3][3];
+    private static int jugadorActual = 1;
+
+    public static void iniciarArray() {
+        for (int[] tablero1 : tablero) {
+            for (int j = 0; j < tablero1.length; j++) {
+                tablero1[j] = 0;
+            }
+        }
+        leerArray();
+    }
+
+    private static void leerArray() {
+        System.out.println("  0 1 2");
+        for (int i = 0; i < 3; i++) {
+            System.out.print(i + " ");
+            for (int j = 0; j < 3; j++) {
+                char simbolo = (tablero[i][j] == 1) ? 'X' : (tablero[i][j] == 2) ? 'O' : ' ';
+                System.out.print(simbolo);
+                if (j < 2) {
+                    System.out.print("|");
+                }
+            }
+            System.out.println();
+            if (i < 2) {
+                System.out.println("  -----");
+            }
+        }
+    }
+
+    public static void introducirNumero() {
+      int fila, columna;
+    do {
+        System.out.println("Jugador " + jugadorActual + ", ingresa la fila (0-2):");
+        fila = util.Util.leerInt();
+        System.out.println("Jugador " + jugadorActual + ", ingresa la columna (0-2):");
+        columna = util.Util.leerInt();
+    } while (!esJugadaValida(fila, columna));
+
+    tablero[fila][columna] = jugadorActual;
+    }
+
+    private static boolean esJugadaValida(int fila, int columna) {
+        return fila >= 0 && fila < 3 && columna >= 0 && columna < 3 && tablero[fila][columna] == 0;
+    }
+
+    public static void cambiarTurno() {
+        jugadorActual = (jugadorActual == 1) ? 2 : 1;
+    }
+
+    public static boolean heGanado() {
+         for (int i = 0; i < 3; i++) {
+        if (tablero[i][0] == jugadorActual && tablero[i][1] == jugadorActual && tablero[i][2] == jugadorActual) {
+            return true;
+        }
+    }
+    for (int j = 0; j < 3; j++) {
+        if (tablero[0][j] == jugadorActual && tablero[1][j] == jugadorActual && tablero[2][j] == jugadorActual) {
+            return true;
+        }
+    }
+    if (tablero[0][0] == jugadorActual && tablero[1][1] == jugadorActual && tablero[2][2] == jugadorActual) {
+        return true;
+    }
+    if (tablero[0][2] == jugadorActual && tablero[1][1] == jugadorActual && tablero[2][0] == jugadorActual) {
+        return true;
+    }
+
+    return false;
+    }
+
+    public static boolean verificarEmpate() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (tablero[i][j] == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        iniciarArray();
+
+        while (true) {
+            introducirNumero();
+            leerArray();
+
+            if (heGanado()) {
+                System.out.println("¡Jugador " + jugadorActual + " ha ganado!");
+                break;
+            }
+
+            if (verificarEmpate()) {
+                System.out.println("¡Es un empate!");
+                break;
+            }
+
+            cambiarTurno();
+        }
+    }
+}
