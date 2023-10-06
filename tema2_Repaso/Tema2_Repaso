@@ -1,1 +1,536 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package tema2_repaso;
 
+/**
+ *
+ * @author NitroPC
+ */
+public class Tema2_Repaso {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        int opc = 0;
+        do {
+            menu();
+            opc = util.Util.leerInt();
+            switch (opc) {
+                case 1:
+                    sueldo();
+                    break;
+                case 2:
+                    edad();
+                    break;
+                case 3:
+                    nota();
+                    break;
+                case 4:
+                    mayorDeTres();
+                    break;
+                case 5:
+                    switchEj();
+                    break;
+                case 6:
+                    diaDeLaSemana();
+                    break;
+                case 7:
+                    testDeCaptacion();
+                    break;
+                case 8:
+                    calculadora();
+                    break;
+                case 9:
+                    tablaCinco();
+                    break;
+                case 10:
+                    tablaMultiplicar();
+                    break;
+                case 11:
+                    paresImpares();
+                    break;
+                case 12:
+                    tabla10();
+                    break;
+                case 13:
+                    cuentasCorrientes();
+                    break;
+                case 14:
+                    notasAlumnos();
+                    break;
+                case 15:
+                    calculadoraOpciones();
+                    break;
+            }
+        } while (opc != 16);
+    }
+
+    private static void menu() {
+        System.out.println("1-- Sueldo");
+        System.out.println("2-- Edad");
+        System.out.println("3-- Nota");
+        System.out.println("4-- Mayor de tres");
+        System.out.println("5-- Switch");
+        System.out.println("6-- Dia de la semana");
+        System.out.println("7-- Test de captación");
+        System.out.println("8-- Calculadora");
+        System.out.println("9-- Tabla del cinco");
+        System.out.println("10-- Tabla de multiplicar");
+        System.out.println("11-- Pares e impares");
+        System.out.println("12-- Tabla de multiplicar de los "
+                + "10 primeros números");
+        System.out.println("13-- Cuentas corrientes");
+        System.out.println("14-- Notas alumnos");
+        System.out.println("15-- Calculadora opciones ");
+        System.out.println("16-- SALIR");
+    }
+
+    private static void sueldo() {
+        System.out.print("Ingresa el sueldo en euros: ");
+
+        double sueldo = util.Util.leerDouble();
+
+        if (sueldo > 3000) {
+            System.out.println("Debe abonar impuestos.");
+        } else {
+            System.out.println("No debe abonar impuestos.");
+        }
+    }
+
+    private static void edad() {
+        System.out.print("Ingrese su edad: ");
+        int edad = util.Util.leerInt();
+
+        if (edad >= 18) {
+            System.out.println("Eres mayor de edad.");
+        } else {
+            System.out.println("Eres menor de edad.");
+        }
+    }
+
+    private static void nota() {
+        System.out.print("Ingrese la nota: ");
+        int nota = util.Util.leerInt();
+
+        String mensaje;
+
+        switch (nota) {
+            case 1:
+            case 2:
+                mensaje = "Gutxiegi";
+                break;
+            case 3:
+            case 4:
+                mensaje = "Gutxi";
+                break;
+            case 5:
+                mensaje = "Nahiko";
+                break;
+            case 6:
+                mensaje = "Ondo";
+                break;
+            case 7:
+            case 8:
+                mensaje = "Oso ondo";
+                break;
+            case 9:
+            case 10:
+                mensaje = "Bikain";
+                break;
+            default:
+                mensaje = "Dato incorrecto.";
+                break;
+        }
+        System.out.println("La nota en formato texto es: " + mensaje);
+    }
+
+    private static void mayorDeTres() {
+        System.out.print("Ingrese el primer número: ");
+        int num1 = util.Util.leerInt();
+
+        System.out.print("Ingrese el segundo número: ");
+        int num2 = util.Util.leerInt();
+
+        System.out.print("Ingrese el tercer número: ");
+        int num3 = util.Util.leerInt();
+
+        int mayor = Math.max(Math.max(num1, num2), num3);
+
+        System.out.println("El mayor de los tres números es: " + mayor);
+    }
+
+    private static void switchEj() {
+        nota();
+    }
+
+    private static void diaDeLaSemana() {
+        System.out.print("Ingrese un número del 1 al 7: ");
+        int numero = util.Util.leerInt();
+
+        String dia;
+
+        switch (numero) {
+            case 1:
+                dia = "Domingo";
+                break;
+            case 2:
+                dia = "Lunes";
+                break;
+            case 3:
+                dia = "Martes";
+                break;
+            case 4:
+                dia = "Miércoles";
+                break;
+            case 5:
+                dia = "Jueves";
+                break;
+            case 6:
+                dia = "Viernes";
+                break;
+            case 7:
+                dia = "Sábado";
+                break;
+            default:
+                dia = "Número incorrecto, no corresponde a un día"
+                        + " de la semana.";
+                break;
+        }
+        System.out.println("El día correspondiente al número " + numero
+                + " es: " + dia);
+    }
+
+    private static void testDeCaptacion() {
+
+        System.out.print("Ingrese la cantidad total de preguntas: ");
+        int totalPreguntas = util.Util.leerInt();
+
+        System.out.print("Ingrese la cantidad de preguntas correctas: ");
+        int preguntasCorrectas = util.Util.leerInt();
+
+        double porcentajeCorrectas = (double) preguntasCorrectas / totalPreguntas * 100;
+
+        String nivel;
+
+        if (porcentajeCorrectas >= 90) {
+            nivel = "Nivel máximo";
+        } else if (porcentajeCorrectas >= 75) {
+            nivel = "Nivel medio";
+        } else if (porcentajeCorrectas >= 50) {
+            nivel = "Nivel regular";
+        } else {
+            nivel = "Fuera de nivel";
+        }
+
+        System.out.println("Porcentaje de respuestas correctas: "
+                + porcentajeCorrectas + "%");
+
+        System.out.println("Nivel: " + nivel);
+    }
+
+    private static void calculadora() {
+        while (true) {
+            System.out.println("*****************");
+            System.out.println("Calculadora");
+            System.out.println("*****************");
+
+            System.out.print("Introduce el número 1: ");
+            double num1 = util.Util.leerDouble();
+
+            System.out.print("Introduce el número 2: ");
+            double num2 = util.Util.leerDouble();
+
+            System.out.println("\nElije la operación:");
+            System.out.println("1. Suma");
+            System.out.println("2. Resta");
+            System.out.println("3. Producto");
+            System.out.println("4. División");
+            System.out.println("5. Salir");
+
+            int opcion = util.Util.leerInt();
+
+            if (opcion == 5) {
+                System.out.println("¡AGUR!");
+                break;
+            }
+
+            double resultado = 0.0;
+            String operacion = "";
+
+            switch (opcion) {
+                case 1:
+                    resultado = num1 + num2;
+                    operacion = "+";
+                    break;
+                case 2:
+                    resultado = num1 - num2;
+                    operacion = "-";
+                    break;
+                case 3:
+                    resultado = num1 * num2;
+                    operacion = "*";
+                    break;
+                case 4:
+                    resultado = num1 / num2;
+                    operacion = "/";
+                    break;
+                default:
+                    System.out.println("Opción inválida. Por favor, elige una"
+                            + " opción válida.");
+                    continue;
+            }
+            System.out.println("Resultado: " + num1 + " " + operacion + " "
+                    + num2 + " = " + resultado + "\n");
+        }
+    }
+
+    private static void tablaCinco() {
+        int numero = 5;
+
+        System.out.println("La tabla de multiplicar del " + numero + ":");
+        System.out.println("----------------------");
+
+        for (int i = 1; i <= 10; i++) {
+            int resultado = numero * i;
+            System.out.println(numero + " x " + i + " = " + resultado);
+        }
+    }
+
+    private static void tablaMultiplicar() {
+        int opc = 0;
+        do {
+            menuTablaMultiplicar();
+            opc = util.Util.leerInt();
+            switch (opc) {
+                case 1:
+                    whileCase();
+                    break;
+                case 2:
+                    doWhileCase();
+                    break;
+                case 3:
+                    forCase();
+                    break;
+            }
+        } while (opc != 4);
+    }
+
+    private static void menuTablaMultiplicar() {
+        System.out.println("1-- While");
+        System.out.println("2-- Do-while");
+        System.out.println("3-- For");
+        System.out.println("4-- SALIR");
+    }
+
+    private static void whileCase() {
+        System.out.print("Ingrese un número para mostrar su tabla de "
+                + "multiplicar: ");
+        int numero = util.Util.leerInt();
+
+        int i = 1;
+
+        System.out.println("Tabla de multiplicar del " + numero + ":");
+        System.out.println("----------------------");
+
+        while (i <= 10) {
+            int resultado = numero * i;
+            System.out.println(numero + " x " + i + " = " + resultado);
+            i++;
+        }
+    }
+
+    private static void doWhileCase() {
+        System.out.print("Ingrese un número para mostrar su tabla de "
+                + "multiplicar: ");
+        int numero = util.Util.leerInt();
+
+        int i = 1;
+
+        System.out.println("Tabla de multiplicar del " + numero + ":");
+        System.out.println("----------------------");
+
+        do {
+            int resultado = numero * i;
+            System.out.println(numero + " x " + i + " = " + resultado);
+            i++;
+        } while (i <= 10);
+    }
+
+    private static void forCase() {
+        System.out.print("Ingrese un número para mostrar su tabla de"
+                + " multiplicar: ");
+        int numero = util.Util.leerInt();
+
+        System.out.println("Tabla de multiplicar del " + numero + ":");
+        System.out.println("----------------------");
+
+        for (int i = 1; i <= 10; i++) {
+            int resultado = numero * i;
+            System.out.println(numero + " x " + i + " = " + resultado);
+        }
+    }
+
+    private static void paresImpares() {
+        System.out.print("Ingrese la cantidad de números enteros a tratar: ");
+        int n = util.Util.leerInt();
+
+        int pares = 0;
+        int impares = 0;
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Ingrese el número " + (i + 1) + ": ");
+            int numero = util.Util.leerInt();
+
+            if (numero % 2 == 0) {
+                pares++;
+            } else {
+                impares++;
+            }
+        }
+
+        System.out.println("Cantidad de números pares: " + pares);
+        System.out.println("Cantidad de números impares: " + impares);
+    }
+
+    private static void tabla10() {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("Tabla de multiplicar del " + i + ":");
+            System.out.println("----------------------");
+
+            for (int j = 1; j <= 10; j++) {
+                int resultado = i * j;
+                System.out.println(i + " x " + j + " = " + resultado);
+            }
+
+            System.out.println();
+        }
+    }
+
+    private static void cuentasCorrientes() {
+        int numeroCuenta;
+        double saldo;
+        double sumaSaldosAcreedores = 0;
+
+        while (true) {
+            System.out.print("Ingrese el número de cuenta (o un número negativo"
+                    + " para salir): ");
+            numeroCuenta = util.Util.leerInt();
+
+            if (numeroCuenta < 0) {
+                break;
+            }
+
+            System.out.print("Ingrese el saldo actual: ");
+            saldo = util.Util.leerDouble();
+
+            String estadoCuenta;
+            if (saldo > 0) {
+                estadoCuenta = "Acreedor";
+                sumaSaldosAcreedores += saldo;
+            } else if (saldo < 0) {
+                estadoCuenta = "Deudor";
+            } else {
+                estadoCuenta = "Nulo";
+            }
+
+            System.out.println("Número de cuenta: " + numeroCuenta);
+            System.out.println("Estado de la cuenta: " + estadoCuenta);
+            System.out.println("--------------------------");
+        }
+
+        System.out.println("La suma total de los saldos acreedores es: "
+                + sumaSaldosAcreedores);
+    }
+
+    private static void notasAlumnos() {
+        int notasMayoresIgualesA7 = 0;
+        int notasMenoresA7 = 0;
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.print("Ingrese la nota del alumno " + i + ": ");
+            int nota = util.Util.leerInt();
+
+            if (nota >= 7) {
+                notasMayoresIgualesA7++;
+            } else {
+                notasMenoresA7++;
+            }
+        }
+
+        System.out.println("Cantidad de alumnos con notas mayores o iguales a"
+                + " 7: " + notasMayoresIgualesA7);
+        System.out.println("Cantidad de alumnos con notas menores a 7: "
+                + notasMenoresA7);
+    }
+
+    private static void calculadoraOpciones() {
+        int opcion;
+
+        do {
+            System.out.println("*****************");
+            System.out.println("Calculadora");
+            System.out.println("*****************");
+            System.out.println("1. Suma");
+            System.out.println("2. Resta");
+            System.out.println("3. Producto");
+            System.out.println("4. División");
+            System.out.println("5. Salir");
+            System.out.print("Introduce la opción deseada: ");
+
+            opcion = util.Util.leerInt();
+
+            switch (opcion) {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    System.out.print("Introduce el primer número: ");
+                    double num1 = util.Util.leerDouble();
+
+                    System.out.print("Introduce el segundo número: ");
+                    double num2 = util.Util.leerDouble();
+
+                    String operacion = "";
+                    double resultado = 0.0;
+
+                    switch (opcion) {
+                        case 1:
+                            operacion = "Suma";
+                            resultado = num1 + num2;
+                            break;
+                        case 2:
+                            operacion = "Resta";
+                            resultado = num1 - num2;
+                            break;
+                        case 3:
+                            operacion = "Producto";
+                            resultado = num1 * num2;
+                            break;
+                        case 4:
+                            operacion = "División";
+                            if (num2 != 0) {
+                                resultado = num1 / num2;
+                            } else {
+                                System.out.println("No se puede dividir por cero.");
+                            }
+                            break;
+                    }
+
+                    if (opcion >= 1 && opcion <= 4) {
+                        System.out.println("Operación seleccionada: " + operacion);
+                        System.out.println(num1 + " " + operacion + " " + num2 + " = " + resultado);
+                    }
+                    break;
+                case 5:
+                    System.out.println("¡AGUR!");
+                    break;
+                default:
+                    System.out.println("Opción " + opcion + " no disponible, vuelva a intentarlo.");
+            }
+        } while (opcion != 5);
+    }
+}
