@@ -1,1 +1,164 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package tema1_repaso;
 
+import java.text.DecimalFormat;
+
+/**
+ *
+ * @author NitroPC
+ */
+public class Tema1_Repaso {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        int opc = 0;
+        do {
+            menu();
+            opc = util.Util.leerInt();
+            switch (opc) {
+                case 1:
+                    leerNum();
+                    break;
+                case 2:
+                    leerNum1();
+                    break;
+                case 3:
+                    dobleNum();
+                    break;
+                case 4:
+                    signoNum();
+                    break;
+                case 5:
+                    lonCircu();
+                    break;
+                case 6:
+                    areaCirc();
+                    break;
+                case 7:
+                    cubo();
+                    break;
+                case 8:
+                    capital();
+                    break;
+                case 9:
+                    enteroReal();
+                    break;
+                case 10:
+                    centimosEuro();
+                    break;
+            }
+        } while (opc != 11);
+    }
+
+    private static void menu() {
+        System.out.println("1-- Java Leernum");
+        System.out.println("2-- Java Leernum1");
+        System.out.println("3-- Java Doblenum");
+        System.out.println("4-- Java Signonum");
+        System.out.println("5-- Java Loncircu");
+        System.out.println("6-- Java Areacirc");
+        System.out.println("7-- Java Cubo");
+        System.out.println("8-- Java Capital");
+        System.out.println("9-- Java EnteroReal");
+        System.out.println("10-- Java CentimosEuro");
+        System.out.println("11-- SALIR");
+    }
+
+    private static void leerNum() {
+        int num;
+        System.out.println("Inserta un numero entero:");
+        num = util.Util.leerInt();
+        System.out.println(num);
+    }
+
+    private static void leerNum1() {
+        int num;
+        System.out.println("Inserta un numero entero:");
+        num = util.Util.leerInt();
+        System.out.println(num++);
+    }
+
+    private static void dobleNum() {
+        int num;
+        System.out.println("Inserta un numero entero:");
+        num = util.Util.leerInt();
+        System.out.println((num * 2));
+    }
+
+    private static void signoNum() {
+        int num;
+        System.out.println("Inserta un numero entero:");
+        num = util.Util.leerInt();
+        if (num < 0) {
+            System.out.println(-num);
+        } else if (num > 0) {
+            System.out.println(-num);
+        }
+    }
+
+    private static void lonCircu() {
+        double radio, longitud, area;
+        System.out.println("Introduce radio de la circunferencia: ");
+        radio = util.Util.leerDouble();
+        longitud = 2 * Math.PI * radio;
+        area = Math.PI * Math.pow(radio, 2);
+        System.out.println("Longitud de la circunferencia es: " + longitud);
+        System.out.println("Área de la circunferencia es: " + area);
+    }
+
+    private static void areaCirc() {
+        double radio, area;
+        System.out.print("Introduce el radio de un circulo: ");
+        radio = util.Util.leerDouble();
+        area = Math.PI * (radio * radio);
+        DecimalFormat df = new DecimalFormat("#.00");
+        System.out.println("El área de una circunferencia de radio "
+                + df.format(radio) + " es: " + df.format(area));
+    }
+
+    private static void cubo() {
+        int num;
+        System.out.println("Inserta un numero entero:");
+        num = util.Util.leerInt();
+        System.out.println(num * num * num);
+    }
+
+    private static void capital() {
+
+        System.out.print("Introduce la cantidad en euros: ");
+        double cantidad = util.Util.leerDouble();
+        System.out.print("Introduce el tipo de interés: ");
+        double tipoInteres = util.Util.leerDouble();
+        System.out.print("Introduce el periodo de tiempo en días: ");
+        int tiempo = util.Util.leerInt();
+        DecimalFormat df = new DecimalFormat("#.00");
+        double interes = (cantidad * tipoInteres * tiempo) / (360 * 100);
+        System.out.printf("El interés producido es: ", df.format(interes));
+    }
+
+    private static void enteroReal() {
+        System.out.print("Introduce un número real: ");
+        double numeroReal = util.Util.leerDouble();
+        int parteEntera = (int) numeroReal;
+        double parteDecimal = numeroReal - parteEntera;
+        System.out.println("Parte entera: " + parteEntera);
+        System.out.println("Parte decimal: " + parteDecimal);
+
+    }
+
+    private static void centimosEuro() {
+        System.out.print("Introduce una cantidad en euros: ");
+        double cantidadEuros = util.Util.leerDouble();
+        int totalCentimos = (int) (cantidadEuros * 100+ 0.5);
+        int euros = totalCentimos / 100;
+        int centimos = totalCentimos % 100;
+        System.out.println("Número de euros: " + euros);
+        System.out.println("Número de céntimos: " + centimos);
+    }
+}
